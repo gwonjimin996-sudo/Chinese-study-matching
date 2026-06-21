@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>중국어 스터디 매칭</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <h1>🇨🇳 중문과 중국어 스터디 매칭</h1>
+
+  <nav>
+    <button onclick="showPage('home')">홈</button>
+    <button onclick="showPage('signup')">회원가입</button>
+    <button onclick="showPage('login')">로그인</button>
+    <button onclick="showPage('create')">스터디 모집</button>
+    <button onclick="showPage('mypage')">마이페이지</button>
+    <button onclick="logout()">로그아웃</button>
+  </nav>
+</header>
+
+<div id="message"></div>
+
+<!-- 홈 -->
+<section id="home" class="page">
+  <h2>스터디 목록</h2>
+
+  <input
+    type="text"
+    id="searchInput"
+    placeholder="검색어 입력"
+    onkeyup="renderStudies()">
+
+  <select id="filterType" onchange="renderStudies()">
+    <option value="">전체</option>
+    <option value="회화">회화</option>
+    <option value="HSK">HSK</option>
+    <option value="중국문화">중국문화</option>
+  </select>
+
+  <div id="studyList"></div>
+</section>
+
+<!-- 회원가입 -->
+<section id="signup" class="page hidden">
+  <h2>회원가입</h2>
+
+  <input type="text" id="name" placeholder="이름">
+  <input type="text" id="studentId" placeholder="학번">
+  <input type="email" id="email" placeholder="이메일">
+  <input type="password" id="password" placeholder="비밀번호">
+
+  <button onclick="signup()">회원가입</button>
+</section>
+
+<!-- 로그인 -->
+<section id="login" class="page hidden">
+  <h2>로그인</h2>
+
+  <input type="text" id="loginStudentId" placeholder="학번">
+  <input type="password" id="loginPassword" placeholder="비밀번호">
+
+  <button onclick="login()">로그인</button>
+</section>
+
+<!-- 모집 -->
+<section id="create" class="page hidden">
+  <h2>스터디 모집</h2>
+
+  <input type="text" id="studyTitle" placeholder="제목">
+  <input type="number" id="studyCapacity" placeholder="모집 인원">
+
+  <select id="studyType">
+    <option value="회화">회화</option>
+    <option value="HSK">HSK</option>
+    <option value="중국문화">중국문화</option>
+  </select>
+
+  <input type="text" id="studyTime" placeholder="활동 시간">
+
+  <button onclick="createStudy()">등록</button>
+</section>
+
+<!-- 마이페이지 -->
+<section id="mypage" class="page hidden">
+
+  <h2>마이페이지</h2>
+
+  <div id="myInfo"></div>
+
+  <h3>내가 작성한 스터디</h3>
+  <div id="myStudies"></div>
+
+  <h3>내가 신청한 스터디</h3>
+  <div id="myApplications"></div>
+
+</section>
+
+<script src="script.js"></script>
+
+</body>
+</html>
